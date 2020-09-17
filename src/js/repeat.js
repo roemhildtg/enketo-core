@@ -131,8 +131,8 @@ export default {
         }
         let checkEl = el.parentElement.closest( '.or-repeat' );
         // find the furthest repeat parent up the element tree
-        while(checkEl && checkEl.parentElement){
-            checkEl = checkEl.parentElement.closest(".or-repeat");
+        while( checkEl && checkEl.parentElement ){
+            checkEl = checkEl.parentElement.closest( '.or-repeat' );
         }
         const info = el.classList.contains( 'or-repeat-info' );
         let count = info ? 1 : Number( el.querySelector( '.repeat-number' ).textContent );
