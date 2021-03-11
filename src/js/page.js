@@ -367,7 +367,17 @@ export default {
             this._focusOnFirstQuestion( pageEl );
             this._toggleButtons( newIndex );
             pageEl.dispatchEvent( events.PageFlip() );
+            pageEl.setAttribute( 'tabIndex', 1 );
+            pageEl.focus();
         }
+
+        document.querySelectorAll( '[tabindex="0"]' ).forEach( el => el.setAttribute( 'tabIndex', -1 ) );
+        const nextPageButton = document.querySelector( '.next-page' );
+        if ( nextPageButton ) {
+            nextPageButton.setAttribute( 'tabIndex', 2 );
+        }
+        document.querySelectorAll( 'input[readonly]' ).forEach( el => el.setAttribute( 'aria-hidden', 'true' ) );
+        document.querySelectorAll( '[style*="display: none"]' ).forEach( el => el.setAttribute( 'aria-hidden', 'true' ) );
     },
     /**
      * Switches to first page
